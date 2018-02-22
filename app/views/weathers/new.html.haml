@@ -1,0 +1,12 @@
+.panel.panel-default
+  .panel-heading
+    %h4 New City
+  .panel-body
+    = render 'form'
+.panel-body
+  - @weathers.each do |weather| 
+    .search
+      = link_to "#{weather.city}", searched_weathers_path(:city => weather.city, :city_id => "#{weather.id}"), method: :post
+
+
+

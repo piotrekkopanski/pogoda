@@ -1,0 +1,13 @@
+= form_with(model: @weather, local: true) do |f|
+  - if @weather.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@weather.errors.count, "error")} prohibited this client from being saved:"
+      %ul
+        - @weather.errors.full_messages.each do |message|
+          %li= message
+
+  .form-group
+    = f.label :city
+    = f.text_field :city, class: 'form-control'
+  .actions
+    = f.submit 'Search', class: 'btn btn-primary'

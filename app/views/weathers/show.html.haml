@@ -1,0 +1,46 @@
+.panel.panel-default
+  .panel-heading
+    %h4 Current weather
+  .panel-body
+    %table.table
+      %thead
+        %tr
+          %th Miasto
+          %th Temperatura
+          %th Ćiśnienie atmosferyczne
+          %th Zachmurzenie
+          %th Prędkość wiatru
+      %tbody
+        - temperature = $weather["main"]["temp"]
+        %tr
+          %td= @weather.city
+          %td{ class:[ (:blue if temperature < 10), (:black if temperature.between? 10, 20),(:red if temperature > 20)] }= temperature.to_s + " ℃"
+          %td= $weather["main"]["pressure"].to_s + " hPa"
+          %td= $weather["clouds"]["all"].to_s + "%"
+          %td= $weather["wind"]["speed"].to_s + " km/h"
+
+%div{id: "show"} Next days
+.panel-body.next_days.hide
+  %table.table
+    %thead
+      %tr
+        %th Godzina
+        %th Dzień
+        %th Temperatura maxymalna
+        %th Temperatura minimalna
+        %th Ćiśnienie atmosferyczne
+        %th Prędkość wiatru
+      %tbody
+        - $next_days['list'].each do |day|
+          %tr
+            - temp_max = day['main']['temp_max']
+            - temp_min = day['main']['temp_min']
+            %td= Time.at(DateTime.strptime(day['dt'].to_s,'%s')).strftime("%H:%M")
+            %td= Time.at(DateTime.strptime(day['dt'].to_s,'%s')).strftime("%A")
+            %td{ class:[ (:blue if temp_max < 10), (:black if temp_max.between? 10, 20),(:red if temp_max > 20)] }= temp_max.to_s + " ℃"
+            %td{ class:[ (:blue if temp_min < 10), (:black if temp_min.between? 10, 20),(:red if temp_min > 20)] }= temp_min.to_s + " ℃"
+            %td= day['main']['pressure'].to_s + " hPa"
+            %td= day['wind']['speed'].to_s + " km/h"
+
+    
+   

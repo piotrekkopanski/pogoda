@@ -1,0 +1,46 @@
+// Place all the styles related to the weathers controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.hide {
+  display: none;
+}
+
+td {
+  text-align: center;
+}
+
+.black {
+  color: black;
+}
+
+.blue {
+  color: blue;
+}
+
+.red {
+  color: red;
+}
+
+th {
+  padding-left: 12px;
+}
+
+.search {
+  width: 185px;
+  height: 20px;
+  display: inline-block;
+}
+
+.search:hover {
+  background: lightseagreen;
+}
+
+div#show {
+  background: rgba(87, 165, 87, 0.9);
+  width: 250px;
+  text-align: center;
+  color: white;
+  border-radius: 12px;
+  cursor: pointer;
+}
